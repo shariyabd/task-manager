@@ -12,11 +12,12 @@
                             <div class="card-inner card-inner-lg">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
-                                        <h4 class="nk-block-title">Sign-In</h4>
+                                        <h4 class="nk-block-title">Rest Password</h4>
                                     </div>
                                 </div>
-                                <form action="{{route('login')}}" method="POST">
+                                <form action="{{route('password.update')}}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="token" value="{{$token}}">
                                     <div class="form-group">
                                         <div class="form-label-group">
                                             <label class="form-label" for="default-01">Email </label>
@@ -45,18 +46,9 @@
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                     <div class="form-group">
-                                        <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+                                        <button class="btn btn-lg btn-primary btn-block">Reset</button>
                                     </div>
                                 </form>
-                                <div class="form-note-s2 text-center pt-4"> Don't Have Account? <a href="{{route('register.form')}}">Create an account</a>
-                                </div>
-                                <div class="text-center pt-4 pb-3">
-                                    <h6 class="overline-title overline-title-sap"><span>OR</span></h6>
-                                </div>
-                                <ul class="nav justify-center gx-4">
-                                    <li class="nav-item"><a class="nav-link" href="#">Facebook</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Google</a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>

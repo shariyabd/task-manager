@@ -14,4 +14,8 @@ class AdminAuthFormController extends Controller
     public function registerForm(){
         return view('backend.auth.register');
     }
+
+    public function resetForm(){
+        return view('backend.auth.forget');
+    }
 }

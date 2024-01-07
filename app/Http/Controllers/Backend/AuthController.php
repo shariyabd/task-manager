@@ -3,31 +3,69 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use App\Models\UserVerify;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    public function register(RegisterRequest $request){
-      
-       $validated_data =  $request->validated();
-       $user = new User($validated_data);
-       $user->password = Hash::make($request->password);
-       $user->role = 'user';
-       $user->save();
-      
+    public function register(RegisterRequest $request)
+    {
+        
+            $validated_data = $request->validated();
 
-       if($user){
-        return "user register successfully";
-       }else{
-        return "user register faild";
-       }
+            $user = User::create([
+                'name' => $validated_data['name'],
+                'email' => $validated_data['email'],
+                'password' => Hash::make($validated_data['password']),
+                'role' => 'user',
+            ]);
+       
+            $token = Str::random(64);
+    
+            UserVerify::create([
+                'user_id' => $user->id,
+                'token' => $token,
+            ]);
+    
+        
+           
+            $emailSent = Mail::send('backend.mail.email', ['token' => $token], function ($message) use ($request) {
+                $message->to($request->email);
+                $message->subject('Email Verification Mail');
+            });
+            
+            if ($emailSent ) {
+                return "We have successfully sent you an email for verification.";
+            } else {
+                return "Email sending failed.";
+            }
+            
+
+       
     }
+
+
+    public function verifyAccount($token){
+        $verifyUser = UserVerify::where('token', $token)->first();
+        if(!is_null($verifyUser)){
+            $user = $verifyUser->user;
+
+            if(!$user->is_email_verified){
+                $verifyUser->user->is_email_verified = 1;
+                $verifyUser->user->save();
+                return redirect(route('login.form'));
+            }
+        }
+    }
+    
 
     public function login(LoginRequest $request){
 
@@ -43,10 +81,10 @@ class AuthController extends Controller
                 return redirect()->route('dashboard'); 
             } else {
                 return "user dashboard";
-                // return redirect()->route('user.dashboard'); 
+               
             }
         } else {
-            // Authentication failed
+            
             return "failed";
         }
     

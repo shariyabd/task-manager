@@ -29,7 +29,7 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                     <div class="form-group">
-                                        <label class="form-label" for="email">Email or Username</label>
+                                        <label class="form-label" for="email">Email</label>
         
                                         <input type="email" name="email" class="form-control form-control-lg" id="email"
                                             placeholder="Enter your email address or username">
@@ -58,7 +58,7 @@
                                     </div>
                                 </form>
                                 <div class="form-note-s2 text-center pt-4"> Already have an account? <a
-                                        href="html/pages/auths/auth-login-v2.html"><strong>Sign in instead</strong></a>
+                                        href="{{route('login.form')}}"><strong>Sign in instead</strong></a>
                                 </div>
                                 <div class="text-center pt-4 pb-3">
                                     <h6 class="overline-title overline-title-sap"><span>OR</span></h6>
@@ -67,17 +67,6 @@
                                     <li class="nav-item"><a class="nav-link" href="#">Facebook</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#">Google</a></li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nk-footer nk-auth-footer-full">
-                        <div class="container wide-lg">
-                            <div class="row g-3">
-                                <div class="col-lg-6">
-                                    <div class="nk-block-content text-center text-lg-left">
-                                        <p class="text-soft">&copy; 2019 CryptoLite. All Rights Reserved.</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
