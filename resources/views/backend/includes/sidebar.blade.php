@@ -28,17 +28,42 @@
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
-                            <span class="nk-menu-text">Orders</span>
+                            <span class="nk-menu-text">Manage Task</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/orders-default.html" class="nk-menu-link"><span class="nk-menu-text">Order List - Default</span></a>
+                                <a href="html/orders-default.html" class="nk-menu-link"><span class="nk-menu-text">Task List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Order List - Regular</span></a>
+                                <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add Task</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li>
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
+                            <span class="nk-menu-text">Task Category</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="html/orders-default.html" class="nk-menu-link"><span class="nk-menu-text">Category List</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="html/orders-sales.html" class="nk-menu-link"><span class="nk-menu-text">Order List - Sales</span></a>
+                                <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add Category</span></a>
+                            </li>
+                        </ul><!-- .nk-menu-sub -->
+                    </li>
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
+                            <span class="nk-menu-text">Manage User</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="html/orders-default.html" class="nk-menu-link"><span class="nk-menu-text">User List</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Assign Task</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
