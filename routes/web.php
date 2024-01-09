@@ -4,7 +4,10 @@ use App\Http\Controllers\Backend\AdminAuthFormController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,7 @@ Route::post('/register-post', [AuthController::class, 'register'])->name('regist
 Route::post('/login-post', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
 Route::get('/forget', [AdminAuthFormController::class, 'resetForm'])->name('reset.form');
 Route::post('forget-post', [ResetPasswordController::class, 'resetPassword'])->name('forget.post');
 Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('user.password.reset');
@@ -40,3 +44,5 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/', function () {
     return view('backend.index');
 });
+
+Route::get('/create-task', [TaskController::class, 'create'])->name('task.create');                                                              
