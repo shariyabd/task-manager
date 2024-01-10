@@ -40,7 +40,11 @@ Route::get('reset-password/{token}', [ResetPasswordController::class, 'showReset
 Route::post('password-update', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');
 Route::get('/eamil/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+
 Route::get('/', function () {
     return view('backend.index');
 });
