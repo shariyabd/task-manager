@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Backend\AdminAuthFormController;
-use App\Http\Controllers\Backend\AuthController;
-use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\ResetPasswordController;
-use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\Backend\AdminAuthFormController;
+use App\Http\Controllers\Backend\AdminDashboardController;
 
 
 
@@ -40,11 +41,19 @@ Route::get('reset-password/{token}', [ResetPasswordController::class, 'showReset
 Route::post('password-update', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');
 Route::get('/eamil/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+// });
+                                               
+Route::middleware(['auth'])->group(function () {
+    // User dashboard route
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
+    // Admin dashboard route
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    });
 });
-
-
 Route::get('/', function () {
     return view('backend.index');
 });
