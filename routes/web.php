@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\Backend\TaskCategoryController;
 use App\Http\Controllers\Backend\AdminAuthFormController;
 use App\Http\Controllers\Backend\AdminDashboardController;
 
@@ -40,15 +41,18 @@ Route::post('forget-post', [ResetPasswordController::class, 'resetPassword'])->n
 Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('user.password.reset');
 Route::post('password-update', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');
 Route::get('/eamil/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify');
+Route::get('/unauthorized', [AdminAuthFormController::class, 'unAuthError'])->name('unauth');
 
 // Route::group(['middleware' => ['auth']], function () {
 //     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 // });
                                                
 Route::middleware(['auth'])->group(function () {
-    // User dashboard route
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
+    // User dashboard route
+    Route::middleware(['role:user'])->group(function () {
+        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+    });
     // Admin dashboard route
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -58,4 +62,10 @@ Route::get('/', function () {
     return view('backend.index');
 });
 
-Route::get('/create-task', [TaskController::class, 'create'])->name('task.create');                                                              
+
+Route::get('/create-category', [TaskCategoryController ::class, 'create'])->name('category.create');
+Route::get('/create-manage', [TaskCategoryController::class, 'categoryManage'])->name('task.manage');                                                              
+
+Route::get('/create-task', [TaskController::class, 'create'])->name('task.create');   
+Route::get('/manage-task', [TaskController::class, 'index'])->name('task.list');   
+                                          

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class UserDashboardController extends Controller
 {
     public function index(){
-        return "User Dashboard after checking middleware";
+       return view('backend.user.dashboard');
     }
 }

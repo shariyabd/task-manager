@@ -2,9 +2,7 @@
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
             <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+               <h4>Task Manager</h4>
             </a>
         </div>
         <div class="nk-menu-trigger mr-n2">
@@ -32,7 +30,7 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/orders-default.html" class="nk-menu-link"><span class="nk-menu-text">Task List</span></a>
+                                <a href="{{route('task.list')}}" class="nk-menu-link"><span class="nk-menu-text">Task List</span></a>
                             </li>
                             <li class="nk-menu-item">
                                 <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add Task</span></a>
@@ -46,7 +44,7 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="html/orders-default.html" class="nk-menu-link"><span class="nk-menu-text">Category List</span></a>
+                                <a href="{{route('task.manage')}}" class="nk-menu-link"><span class="nk-menu-text">Category List</span></a>
                             </li>
                             <li class="nk-menu-item">
                                 <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add Category</span></a>
