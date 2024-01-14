@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserDashboardController;
@@ -63,8 +64,11 @@ Route::get('/', function () {
 });
 
 
+Route::get('/user-profile', [UserController::class, 'profile'])->name('user.profile'); 
+Route::get('/user-setting', [UserController::class, 'setting'])->name('user.setting'); 
+
 Route::get('/create-category', [TaskCategoryController ::class, 'create'])->name('category.create');
-Route::get('/create-manage', [TaskCategoryController::class, 'categoryManage'])->name('task.manage');                                                              
+Route::get('/create-manage', [TaskCategoryController::class, 'categoryManage'])->name('category.manage');                                                              
 
 Route::get('/create-task', [TaskController::class, 'create'])->name('task.create');   
 Route::get('/manage-task', [TaskController::class, 'index'])->name('task.list');   

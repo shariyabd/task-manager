@@ -41,7 +41,7 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">Today Orders</h6>
+                                                <h6 class="title">Pending Task</h6>
                                             </div>
                                         </div>
                                         <div class="data">
@@ -63,7 +63,7 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">Today Revenue</h6>
+                                                <h6 class="title">Completed Task</h6>
                                             </div>
                                         </div>
                                         <div class="data">
@@ -85,7 +85,7 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">Today Customers</h6>
+                                                <h6 class="title">Overdue Task</h6>
                                             </div>
                                         </div>
                                         <div class="data">
@@ -107,7 +107,7 @@
                                     <div class="card-inner">
                                         <div class="card-title-group">
                                             <div class="card-title">
-                                                <h6 class="title">Today Visitors</h6>
+                                                <h6 class="title">Priority Task</h6>
                                             </div>
                                         </div>
                                         <div class="data">

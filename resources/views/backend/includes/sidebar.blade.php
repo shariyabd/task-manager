@@ -44,7 +44,7 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="{{route('task.manage')}}" class="nk-menu-link"><span class="nk-menu-text">Category List</span></a>
+                                <a href="{{route('category.manage')}}" class="nk-menu-link"><span class="nk-menu-text">Category List</span></a>
                             </li>
                             <li class="nk-menu-item">
                                 <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Add Category</span></a>
