@@ -51,6 +51,8 @@
                             </li>
                         </ul><!-- .nk-menu-sub -->
                     </li>
+                 
+                    @if(Auth::user()->hasRole('admin'))
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
                             <span class="nk-menu-icon"><em class="icon ni ni-cc-alt2-fill"></em></span>
@@ -64,7 +66,10 @@
                                 <a href="html/orders-regular.html" class="nk-menu-link"><span class="nk-menu-text">Assign Task</span></a>
                             </li>
                         </ul><!-- .nk-menu-sub -->
-                    </li><!-- .nk-menu-item -->
+                    </li>
+                @endif
+                
+                    <!-- .nk-menu-item -->
                 </ul><!-- .nk-menu -->
             </div><!-- .nk-sidebar-menu -->
         </div><!-- .nk-sidebar-content -->

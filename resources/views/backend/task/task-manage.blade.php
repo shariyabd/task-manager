@@ -15,26 +15,37 @@
                 <table class="table table-bordered">
                     <thead>
                         <th>Id</th>
-                        <th>Name : </th>
-                        <th>Description :</th>
-                        <th>Due Date :</th>
+                        <th>Title : </th>
+                        <th>Deadline Date :</th>
+                        <th>Deadline Time :</th>
                         <th>Priority</th>
                         <th>Category</th>
+                        <th>Description</th>
+                        <th>Assignee</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
                         <th>Status</th>
+                        <th>Due Time</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Technology</td>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus sit nemo aperiam alias tempore molestiae vitae soluta aliquid eveniet hic!</td>
-                            <td>12/23/12</td>
-                            <td>Urgent</td>
-                            <td>Development</td>
-                            <td>Backlog</td>
-                            <td><a href="" class="btn btn-sm btn-primary">View</a></td>
-                        </tr>
-                      
+                       @foreach ($tasks as $index=>$task)
+                       <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{$task->title}}</td>
+                        <td>{{$task->deadline_date}}</td>
+                        <td>{{$task->deadline_time}}</td>
+                        <td>{{$task->priority}}</td>
+                        <td>{{$task->category->name}}</td>
+                        <td>{{$task->description}}</td>
+                        <td>{{$task->assignee}}</td>
+                        <td>{{$task->created_at}}</td>
+                        <td>{{$task->updated_at}}</td>
+                        <td>On Quaue</td>
+                        <td>23</td>
+                        <td>Edit</td>
+                       </tr>
+                       @endforeach
                     </tbody>
                 </table><!-- .nk-block-head --><!-- .nk-block -->
             </div>

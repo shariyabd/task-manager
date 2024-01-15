@@ -26,7 +26,8 @@ class AuthController extends Controller
             'name' => $validated_data['name'],
             'email' => $validated_data['email'],
             'password' => Hash::make($validated_data['password']),
-            'role_id' => Role::where('name', 'user')->first()->id,
+            'role_id' => Role::where('name', 'user')->value('id') ?? 1,
+
         ]);
 
         $token = Str::random(64);
@@ -73,12 +74,14 @@ class AuthController extends Controller
     {
 
 
+        
         $validated_data = $request->validated();
 
         $credentials = ['email' => $request->email, 'password' => $request->password];
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
+
             if ($user->hasRole('admin')) {
                 return redirect('/admin/dashboard');
             } elseif ($user->hasRole('user')) {

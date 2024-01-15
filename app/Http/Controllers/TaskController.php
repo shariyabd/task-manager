@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -12,10 +13,11 @@ class TaskController extends Controller
     }
 
     public function index(){
-        return view('backend.task.task-manage');
+        $tasks = Task::with('category')->latest()->paginate(20);
+        return view('backend.task.task-manage', compact('tasks'));
     }
 
-    public function store(){
-        
+    public function store(Request $request){
+        dd($request->all());
     }
 }
