@@ -66,6 +66,8 @@ Route::get('/', function () {
 
 Route::get('/user-profile', [UserController::class, 'profile'])->name('user.profile'); 
 Route::get('/user-setting', [UserController::class, 'setting'])->name('user.setting'); 
+Route::get('/user-activity', [UserController::class, 'activity'])->name('user.activity'); 
+Route::get('/user-notification', [UserController::class, 'notification'])->name('user.notification'); 
 
 Route::get('/create-category', [TaskCategoryController ::class, 'create'])->name('category.create');
 Route::get('/create-manage', [TaskCategoryController::class, 'categoryManage'])->name('category.manage');                                                              

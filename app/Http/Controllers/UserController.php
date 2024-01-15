@@ -13,4 +13,12 @@ class UserController extends Controller
     public function setting(){
         return view('backend.user.user-setting');
     }
+
+    public function activity(){
+        return view('backend.user.user-activity');
+    }
+
+    public function notification(){
+        return view('backend.user.user-notification');
+    }
 }

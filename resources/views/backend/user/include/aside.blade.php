@@ -33,7 +33,7 @@
             <ul class="link-list-menu">
                 <li><a class="active" href="{{route('user.profile')}}"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a></li>
                 <li><a href="#"><em class="icon ni ni-bell-fill"></em><span>Notifications</span></a></li>
-                <li><a href="#"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
+                <li><a href="{{route('user.activity')}}"><em class="icon ni ni-activity-round-fill"></em><span>Account Activity</span></a></li>
                 <li><a href="{{route('user.setting')}}"><em class="icon ni ni-lock-alt-fill"></em><span>Security Settings</span></a></li>
             </ul>
         </div><!-- .card-inner -->
