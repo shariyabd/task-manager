@@ -88,6 +88,8 @@ class AuthController extends Controller
                 return redirect('/dashboard');
             }
 
+        }else{
+            return redirect()->back()->with('error', "Credentials Does not Match");
         }
 
     }

@@ -17,9 +17,10 @@ return new class extends Migration
             $table->date('deadline_date')->nullable();
             $table->time('deadline_time')->nullable();
             $table->string('priority')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();  
             $table->text('description')->nullable();
             $table->string('status')->nullable();
+            $table->string('assignee')->nullable();
             $table->string('due_time')->nullable();
             $table->timestamps();
         });

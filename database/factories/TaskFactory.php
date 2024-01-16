@@ -17,8 +17,8 @@ class TaskFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
-            'deadline-date' => $this->faker->date,
-            'deadline-time' => $this->faker->time,
+            'deadline_date' => $this->faker->date,
+            'deadline_time' => $this->faker->time,
             'priority' => $this->faker->randomElement(['High', 'Medium', 'Low']),
             'category_id' => function () {
                 return $this->faker->randomElement(range(1, 10));
