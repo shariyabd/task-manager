@@ -20,4 +20,14 @@ class TaskController extends Controller
     public function store(Request $request){
         dd($request->all());
     }
+    public function show($id){
+        $taskItem = Task::with('category')->find($id);
+    
+        if(empty($taskItem)){
+            return redirect()->back()->with('error', 'Task Not Found');
+        } else {
+            return response()->json(["data" => $taskItem]);
+        }
+    }
+    
 }

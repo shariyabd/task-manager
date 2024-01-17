@@ -12,15 +12,19 @@
             <div class="modal-body">
                 <form action="">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="title">Title :</label>
                                 <input type="text" name="title" id="title" class="form-control">
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                                <label for="assignee">Assignee</label>
+                                <input name="assignee" id="assignee" 
+                                    class="form-control w-100">
                             </div>
+                         
                             <div class="form-group">
                                 <label for="deadline_date">Deadline Date</label>
                                 <input type="date" name="deadline_date" id="deadline_date" class="form-control">
@@ -29,10 +33,7 @@
                                 <label for="deadline_time">Deadline Time</label>
                                 <input type="time" name="deadline_time" id="deadline_time" class="form-control">
                             </div>
-                            <div class="form-group">
-                                <label for="priority">Priority</label>
-                                <input type="text" name="priority" id="priority" class="form-control">
-                            </div>
+                          
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
@@ -57,10 +58,11 @@
 
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label for="assignee">Assignee</label>
-                                <input name="assignee" id="assignee" cols="30" rows="10"
-                                    class="form-control">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>

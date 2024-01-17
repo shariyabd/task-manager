@@ -75,4 +75,5 @@ Route::get('/create-manage', [TaskCategoryController::class, 'categoryManage'])-
 Route::get('/create-task', [TaskController::class, 'create'])->name('task.create');   
 Route::post('/store-task', [TaskController::class, 'store'])->name('task.store');   
 Route::get('/manage-task', [TaskController::class, 'index'])->name('task.list');   
+Route::get('/task-show/{id?}', [TaskController::class, 'show'])->name('task.show');   
                                           
