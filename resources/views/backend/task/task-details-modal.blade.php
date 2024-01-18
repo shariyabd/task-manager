@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <table id="detailsTable" class="table table-bordered">
 
-                        </table>
+                        </table> 
                     </div>
                 </div>
             </div>

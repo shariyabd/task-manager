@@ -18,7 +18,37 @@ class TaskController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
+        $validate_data = $request->validate([
+            'title' => 'required|string',
+            'assignee' => 'required|string',
+            'deadline_date' => 'required|date',
+            'deadline_time' => 'required',
+            'priority' => 'required',
+            'status' => 'required',
+            'category' => 'required|exists:categories,id',
+            'description' => 'required|string',
+        ]);
+
+        $task = Task::create([
+            'title' => $request->title,
+            'deadline_date' => $request->deadline_date,
+            'deadline_time' => $request->deadline_time,
+            'priority' => $request->priority,
+            'category_id' => $request->category,
+            'description' => $request->description,
+            'status' => "pending",
+            'assignee' => $request->assignee,
+            'due_time' => null
+        ]);
+
+        if($task){
+            return redirect()->back()->with('message', 'Task Created Successfully');
+        }else{
+            return redirect()->back()->with('error', 'Task Created Faild');
+        }
+        
+      
+
     }
     public function show($id){
         $taskItem = Task::with('category')->find($id);

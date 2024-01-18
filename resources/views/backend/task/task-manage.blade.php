@@ -45,18 +45,19 @@
     </div>
 @endsection
 
+
 @push('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function taskDetails(id) {
-
             $.ajax({
-                url: '{{ url('task-show') }}/' + id  ,
+                url: '{{ url('task-show') }}/' + id,
                 type: 'GET',
-                success: function(response){
+                success: function (response) {
                     var data = response.data;
                     var statusText = (data.status == null) ? 'Pending' : 'Publish';
-                    $('.details-btn').click(function() {
-                var detailsData = `<tbody>
+
+                    var detailsData = `<tbody>
                 <tr>
                     <th>Id</th>
                     <td>${data.id}</td>
@@ -65,7 +66,7 @@
                     <th>Title</th>
                     <td>${data.title}</td>
                 </tr>
-                <tr>
+                <tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                     <th>Deadline Date</th>
                     <td>${data.deadline_date}</td>
                 </tr>
@@ -105,22 +106,21 @@
                     <td>${formatDate(data.updated_at)}</td>
                 </tr>
             </tbody>`;
-                $('#detailsTable').html(detailsData);
-              
-            });
-                }, error:function(status, error){
+
+                    $('#detailsTable').html(detailsData);
+                    $('#taskDetails').modal('show');
+                },
+                error: function (status, error) {
                     console.log(status);
                     console.log(error);
                 }
             });
-
-            $('#taskDetails').modal('show');
-            
         }
+
         function formatDate(dateString) {
-        const date = new Date(dateString);
-        const formattedDate = date.toISOString().split('T')[0];
-        return formattedDate;
-    }
+            const date = new Date(dateString);
+            const formattedDate = date.toISOString().split('T')[0];
+            return formattedDate;
+        }
     </script>
 @endpush
