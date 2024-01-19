@@ -29,4 +29,20 @@ class TaskCategoryController extends Controller
         
        return view('backend.category.category-manage');
     }
+
+    public function store(Request $request){
+        
+      $data =  $request->validate([
+            'name' => 'required',
+            'slug' => ''
+        ]);
+
+       $category =  Category::create($data);
+
+       if($category){
+        return "success";
+       }else{
+        return "faild";
+       }
+    }
 }

@@ -24,7 +24,7 @@ class TaskController extends Controller
             'deadline_date' => 'required|date',
             'deadline_time' => 'required',
             'priority' => 'required',
-            'status' => 'required',
+            'status' => '',
             'category' => 'required|exists:categories,id',
             'description' => 'required|string',
         ]);
@@ -42,13 +42,11 @@ class TaskController extends Controller
         ]);
 
         if($task){
-            return redirect()->back()->with('message', 'Task Created Successfully');
+            return response()->json(['success' => "Task Created Successfully"]);
         }else{
-            return redirect()->back()->with('error', 'Task Created Faild');
+            return response()->json(['error' => 'Task Create Faild']);
         }
         
-      
-
     }
     public function show($id){
         $taskItem = Task::with('category')->find($id);

@@ -10,7 +10,8 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="">
+            <form action="{{route('category.store')}}" method="POST">
+              @csrf
                 <div class="form-group">
                     <label for="name">Name :</label>
                     <input type="text" name="name" id="name" class="form-control">
@@ -19,12 +20,13 @@
                     <label for="slug">Slug : (Optional)</label>
                     <input type="text" name="slug" id="slug" class="form-control">
                 </div>
-            </form>
+           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
+      </form>
       </div>
     </div>
   </div>

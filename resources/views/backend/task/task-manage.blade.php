@@ -49,11 +49,35 @@
 @push('js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        $('.taskSave').click(function(e) {
+            e.preventDefault();
+            $('.message').empty();
+            $.ajax({
+                url: '{{route('task.store')}}',
+                method: 'POST',
+                data: $('#taskForm').serialize(),
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.success);
+                    }
+                    table.draw();
+                },
+                error: function(error) {
+                    var errors = error.responseJSON.errors;
+                    $.each(errors, function(key, value) {
+                        $('.message').append('<span class="text-danger alert">' +
+                            value +
+                            '</span>' + '<br>');
+                    })
+                }
+            })
+        })
+
         function taskDetails(id) {
             $.ajax({
                 url: '{{ url('task-show') }}/' + id,
                 type: 'GET',
-                success: function (response) {
+                success: function(response) {
                     var data = response.data;
                     var statusText = (data.status == null) ? 'Pending' : 'Publish';
 
@@ -110,7 +134,7 @@
                     $('#detailsTable').html(detailsData);
                     $('#taskDetails').modal('show');
                 },
-                error: function (status, error) {
+                error: function(status, error) {
                     console.log(status);
                     console.log(error);
                 }

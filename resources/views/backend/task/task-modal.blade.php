@@ -9,8 +9,10 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+          
+            <div class="message"></div>
             <div class="modal-body">
-                <form action="{{ route('task.store') }}" method="POST" id="taskForm">
+                <form id="taskForm">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
@@ -88,7 +90,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary taskSave">Save</button>
             </div>
             </form>
         </div>

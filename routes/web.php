@@ -70,6 +70,7 @@ Route::get('/user-activity', [UserController::class, 'activity'])->name('user.ac
 Route::get('/user-notification', [UserController::class, 'notification'])->name('user.notification'); 
 
 Route::get('/create-category', [TaskCategoryController ::class, 'create'])->name('category.create');
+Route::post('/store-category', [TaskCategoryController ::class, 'store'])->name('category.store');
 Route::get('/create-manage', [TaskCategoryController::class, 'categoryManage'])->name('category.manage');                                                              
 
 Route::get('/create-task', [TaskController::class, 'create'])->name('task.create');   
