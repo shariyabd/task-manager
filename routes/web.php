@@ -78,4 +78,7 @@ Route::post('/store-task', [TaskController::class, 'store'])->name('task.store')
 Route::get('/manage-task', [TaskController::class, 'index'])->name('task.list');   
 Route::get('/task-show/{id?}', [TaskController::class, 'show'])->name('task.show');   
 
-                                          
+Route::get('test', function () {
+    event(new App\Events\UserRegisterNotification('shariya'));
+    return "Event has been sent!";
+});

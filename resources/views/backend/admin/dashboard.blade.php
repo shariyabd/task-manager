@@ -130,3 +130,52 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script src="//js.pusher.com/3.1/pusher.min.js"></script>
+
+<script type="text/javascript">
+  var notificationsWrapper   = $('.dropdown-notifications');
+  var notificationsToggle    = notificationsWrapper.find('a[data-toggle]');
+  var notificationsCountElem = notificationsToggle.find('i[data-count]');
+  var notificationsCount     = parseInt(notificationsCountElem.data('count'));
+  var notifications          = notificationsWrapper.find('ul.dropdown-body');
+
+  if (notificationsCount <= 0) {
+    notificationsWrapper.hide();
+  }
+
+  var pusher = new Pusher('b3ed5f4e47532249ba01', {
+      cluster: 'ap2'
+    });
+  // Subscribe to the channel we specified in our Laravel Event
+  var channel = pusher.subscribe('status-user-register');
+
+  // Bind a function to a Event (the full Laravel class)
+  channel.bind('App\\Events\\UserRegisterNotification', function(data) {
+    console.log(data);
+    var existingNotifications = notifications.html();
+    
+    var newNotificationHtml = `
+    <div class="nk-notification">
+                                    <div class="nk-notification-item dropdown-inner">
+                                        <div class="nk-notification-icon">
+                                            <em class="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em>
+                                        </div>
+                                        <div class="nk-notification-content">
+                                            <div class="nk-notification-text">You have requested to
+                                                <span>`+data.message+`</span>
+                                            </div>
+                                            <div class="nk-notification-time">2 hrs ago</div>
+                                        </div>
+                                    </div>                                       
+                                </div>
+    `;
+    notifications.html(newNotificationHtml + existingNotifications);
+
+    notificationsCount += 1;
+    notificationsCountElem.attr('data-count', notificationsCount);
+    notificationsWrapper.find('.notif-count').text(notificationsCount);
+    notificationsWrapper.show();
+  });
+</script>
+@endpush
